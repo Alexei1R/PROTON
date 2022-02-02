@@ -51,6 +51,48 @@
 //
 //};
 
+float cubevertices[] = {
+ 0.25f, 0.25f, 0.25f,           0.0f,  0.0f, -1.0f,           0.0f,  0.0f,
+ 1.25f, 0.25f, 0.25f,           0.0f,  0.0f, -1.0f,           1.0f,  0.0f,
+ 1.25f,  1.25f, 0.25f,           0.0f,  0.0f, -1.0f,           1.0f,  1.0f,
+ 1.25f,  1.25f, 0.25f,           0.0f,  0.0f, -1.0f,           1.0f,  1.0f,
+0.25f,  1.25f, 0.25f,           0.0f,  0.0f, -1.0f,           0.0f,  1.0f,
+0.25f, 0.25f, 0.25f,           0.0f,  0.0f, -1.0f,           0.0f,  0.0f,
+0.25f, 0.25f,  1.25f,           0.0f,  0.0f,  1.0f,           0.0f,  0.0f,
+ 1.25f, 0.25f,  1.25f,           0.0f,  0.0f,  1.0f,           1.0f,  0.0f,
+ 1.25f,  1.25f,  1.25f,           0.0f,  0.0f,  1.0f,           1.0f,  1.0f,
+ 1.25f,  1.25f,  1.25f,           0.0f,  0.0f,  1.0f,           1.0f,  1.0f,
+0.25f,  1.25f,  1.25f,           0.0f,  0.0f,  1.0f,           0.0f,  1.0f,
+0.25f, 0.25f,  1.25f,           0.0f,  0.0f,  1.0f,           0.0f,  0.0f,
+0.25f,  1.25f,  1.25f,          -1.0f,  0.0f,  0.0f,           1.0f,  0.0f,
+0.25f,  1.25f, 0.25f,          -1.0f,  0.0f,  0.0f,           1.0f,  1.0f,
+0.25f, 0.25f, 0.25f,          -1.0f,  0.0f,  0.0f,           0.0f,  1.0f,
+0.25f, 0.25f, 0.25f,          -1.0f,  0.0f,  0.0f,           0.0f,  1.0f,
+0.25f, 0.25f,  1.25f,          -1.0f,  0.0f,  0.0f,           0.0f,  0.0f,
+0.25f,  1.25f,  1.25f,          -1.0f,  0.0f,  0.0f,           1.0f,  0.0f,
+ 1.25f,  1.25f,  1.25f,           1.0f,  0.0f,  0.0f,           1.0f,  0.0f,
+ 1.25f,  1.25f, 0.25f,           1.0f,  0.0f,  0.0f,           1.0f,  1.0f,
+ 1.25f, 0.25f, 0.25f,           1.0f,  0.0f,  0.0f,           0.0f,  1.0f,
+ 1.25f, 0.25f, 0.25f,           1.0f,  0.0f,  0.0f,           0.0f,  1.0f,
+ 1.25f, 0.25f,  1.25f,           1.0f,  0.0f,  0.0f,           0.0f,  0.0f,
+ 1.25f,  1.25f,  1.25f,           1.0f,  0.0f,  0.0f,           1.0f,  0.0f,
+0.25f, 0.25f, 0.25f,           0.0f, -1.0f,  0.0f,           0.0f,  1.0f,
+ 1.25f, 0.25f, 0.25f,           0.0f, -1.0f,  0.0f,           1.0f,  1.0f,
+ 1.25f, 0.25f,  1.25f,           0.0f, -1.0f,  0.0f,           1.0f,  0.0f,
+ 1.25f, 0.25f,  1.25f,           0.0f, -1.0f,  0.0f,           1.0f,  0.0f,
+0.25f, 0.25f,  1.25f,           0.0f, -1.0f,  0.0f,           0.0f,  0.0f,
+0.25f, 0.25f, 0.25f,           0.0f, -1.0f,  0.0f,           0.0f,  1.0f,
+0.25f,  1.25f, 0.25f,           0.0f,  1.0f,  0.0f,           0.0f,  1.0f,
+ 1.25f,  1.25f, 0.25f,           0.0f,  1.0f,  0.0f,           1.0f,  1.0f,
+ 1.25f,  1.25f,  1.25f,           0.0f,  1.0f,  0.0f,           1.0f,  0.0f,
+ 1.25f,  1.25f,  1.25f,           0.0f,  1.0f,  0.0f,           1.0f,  0.0f,
+0.25f,  1.25f,  1.25f,           0.0f,  1.0f,  0.0f,           0.0f,  0.0f,
+0.25f,  1.25f, 0.25f,           0.0f,  1.0f,  0.0f,           0.0f,  1.0f
+
+
+};
+
+
 float vertices[] =
 {
     // positions          // normals           // texture coords
@@ -138,11 +180,24 @@ int main(void)
 {
     Window& window = Window::getInstanse();
     Camera camera(glm::vec3(0.0,0.0,3.0));
+    glm::mat4 view(1.0f);
+    glm::mat4 proj(1.0f);
+
+
+
+    
+
+
+
+
+
+
+
 
 
     Shader shader("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/vs.glsl", "C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/fs.glsl");
     shader.Bind();
-    Texture tex("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/lava.jpg");
+    Texture tex("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/floor.png");
 	VAO VAO1;
 	VAO1.Bind();
 	VBO VBO1(vertices, sizeof(vertices));
@@ -153,8 +208,7 @@ int main(void)
 	
 
     glm::mat4 model(1.0f);
-    glm::mat4 view(1.0f);
-    glm::mat4 proj(1.0f);
+    
 
     //model = glm::rotate(model, (float)glfwGetTime() * glm::radians(0.05f), glm::vec3(0.5f, 1.0f, 0.0f));
     view = camera.GetViewMatrix();
@@ -175,7 +229,7 @@ int main(void)
     VAO1.LinkAttrib(lvbo, 0, 3, GL_FLOAT, 3 * sizeof(float), (void*)0);
 
     glm::mat4 lmodel(1.0f);
-    glm::vec3 lightPos = glm::vec3(3.0, 3.0f, 0.75f);
+    glm::vec3 lightPos = glm::vec3(3.0, 4.0f, 0.75f);
 
     lmodel = glm::translate(lmodel, lightPos);
     //lmodel = glm::scale(lmodel,glm::vec3(0.5,0.5,0.5));
@@ -199,6 +253,36 @@ int main(void)
 
     glm::vec3 camPos(1.0f);
     
+
+
+
+
+
+    //cube implementation 
+    Shader cubeshader("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/cubevertex.glsl", "C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/cubefragment.glsl");
+    cubeshader.Bind();
+    Texture texcube("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/cat.gif");
+    texcube.Bind();
+    VAO cubevao;
+    cubevao.Bind();
+    VBO cubevbo(cubevertices, sizeof(cubevertices));
+    cubevao.LinkAttrib(cubevbo, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+    cubevao.LinkAttrib(cubevbo, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    cubevao.LinkAttrib(cubevbo, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+
+    glm::mat4 cubemodel;
+    cubemodel = glm::translate(cubemodel, glm::vec3(0.0, 1.0, 0.0));
+    cubeshader.SetUniformMatrix4f("view", glm::value_ptr(view), 1);
+    cubeshader.SetUniformMatrix4f("proj", glm::value_ptr(proj), 1);
+    cubeshader.SetUniformMatrix4f("cubemodel", glm::value_ptr(cubemodel), 1);
+
+    
+
+    cubeshader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
+    cubeshader.SetUniform3f("lpos", lightPos.x, lightPos.y, lightPos.z);
+    cubeshader.SetUniform1i("cubeourTexture", 1);
+
+
 
 
     window.SetClearColor(glm::vec3(0.0,0.0,0.0));
@@ -247,7 +331,13 @@ int main(void)
 
 
 
-        
+        cubeshader.Bind();
+        cubevao.Bind();
+        cubevbo.Bind();
+        cubeshader.SetUniformMatrix4f("view", glm::value_ptr(view), 1);
+        cubeshader.SetUniformMatrix4f("cubemodel", glm::value_ptr(model), 1);
+
+        glDrawArrays(GL_TRIANGLES,0,36);
 
 
         window.PoolEvents();

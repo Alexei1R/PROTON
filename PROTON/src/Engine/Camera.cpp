@@ -84,7 +84,7 @@
         double dx = Mouse::getDX();
         double dy = Mouse::getDY();
 
-        ProcessMouseMovement(dx, dy);
+        ProcessMouseMovement(dx, dy,true);
 
     }
     void Camera::updateCameraVectors()
