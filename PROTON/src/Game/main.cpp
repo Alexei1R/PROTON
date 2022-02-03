@@ -216,8 +216,6 @@ int main(void)
     shader.SetUniformMatrix4f("proj", glm::value_ptr(proj),1);
     shader.SetUniformMatrix4f("model", glm::value_ptr(model),1);
     shader.SetUniformMatrix4f("view", glm::value_ptr(view), 1);
-    tex.Bind();
-    shader.SetUniform1i("ourTexture",0);
 
     //light cube
     Shader lshader("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/lvs.glsl", "C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/lfs.glsl");
@@ -262,7 +260,6 @@ int main(void)
     Shader cubeshader("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/cubevertex.glsl", "C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/cubefragment.glsl");
     cubeshader.Bind();
     Texture texcube("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/cat.gif");
-    texcube.Bind();
     VAO cubevao;
     cubevao.Bind();
     VBO cubevbo(cubevertices, sizeof(cubevertices));
@@ -280,7 +277,6 @@ int main(void)
 
     cubeshader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
     cubeshader.SetUniform3f("lpos", lightPos.x, lightPos.y, lightPos.z);
-    cubeshader.SetUniform1i("cubeourTexture", 1);
 
 
 
@@ -290,6 +286,11 @@ int main(void)
     {
         window.Update();
         camera.Update();
+
+        tex.Bind(0);
+        shader.SetUniform1i("ourTexture", 0);
+        texcube.Bind(1);
+        cubeshader.SetUniform1i("cubeourTexture", 1);
 
         camPos = camera.GetCameraPos();
 
