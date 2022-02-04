@@ -6,7 +6,6 @@ in vec3 normal;
 in vec3 FragPos;
 
 
-uniform sampler2D ourTexture;
 uniform vec3 lcolor;
 uniform vec3 lpos;
 uniform vec3 camPos;
@@ -39,7 +38,7 @@ void main()
 
 	vec3 result = (ambiant + diffuse + specular);
 
-	FragColor = texture(ourTexture,TexCoord) * vec4(result,1.0f);
+	FragColor = vec4(0.5,0.1,0.8,1.0);// * vec4(result,1.0f);
 
 
 

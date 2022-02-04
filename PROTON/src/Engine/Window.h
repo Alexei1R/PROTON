@@ -12,8 +12,8 @@
 		
 	private:
 		std::string name;
-		int width = 0;
-		int height = 0;
+		int width;
+		int height;
 		GLFWwindow* window = nullptr;
 	public:
 		Window(const Window&) = delete;
