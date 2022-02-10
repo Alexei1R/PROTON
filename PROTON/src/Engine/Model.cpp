@@ -49,7 +49,6 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 {
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
-	std::vector<Texture> textures;
 
 	for (unsigned int  i = 0; i < mesh->mNumVertices; i++)
 	{
@@ -61,15 +60,17 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 		vertex.Position = vector;
 
 		// normals
-		if (mesh->HasNormals())
-		{
-			vector.x = mesh->mNormals[i].x;
-			vector.y = mesh->mNormals[i].y;
-			vector.z = mesh->mNormals[i].z;
-			vertex.Normal = vector;
-		}
+		vector.x = mesh->mNormals[i].x;
+		vector.y = mesh->mNormals[i].y;
+		vector.z = mesh->mNormals[i].z;
+		vertex.Normal = vector;
 		
-		vertex.TexCoords = glm::vec2(0.0, 0.0);
+		//texture
+		glm::vec2 vec;
+		vec.x = mesh->mTextureCoords[0][i].x;
+		vec.y = mesh->mTextureCoords[0][i].y;
+		vertex.TexCoords = vec;
+			//std::cout << vec.x<<" : " <<vec.y << std::endl;
 
 		vertices.push_back(vertex);
 

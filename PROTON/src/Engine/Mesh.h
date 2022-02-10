@@ -6,7 +6,6 @@
 #include <vector>
 #include <string>
 #include "Shader.h"
-#include "Texture.h"
 
 
 struct Vertex {
@@ -18,15 +17,15 @@ struct Vertex {
 
 
 
+
 class Mesh {
 private :
     unsigned int VAO, VBO, EBO;
 protected:
     std::vector<Vertex> vertices;
     std::vector<unsigned int > indices;
-    std::vector<Texture>texture;
 public:
-    Mesh(std::vector<Vertex>vertices, std::vector<unsigned int>indices);    
+    Mesh(std::vector<Vertex>vertices, std::vector<unsigned int>indices);
     void Draw(Shader& shader);
 private:
     void setupMesh();

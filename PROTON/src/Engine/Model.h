@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "Mesh.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>

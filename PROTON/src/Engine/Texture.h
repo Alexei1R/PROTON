@@ -22,7 +22,6 @@ public:
 
 
 
-
 	inline int GetWidth() const { return tex_w; }
 	inline int GetHight() const { return tex_h; }
 
