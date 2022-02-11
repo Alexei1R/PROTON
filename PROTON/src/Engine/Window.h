@@ -11,6 +11,8 @@
 	public:
 		
 	private:
+
+
 		std::string name;
 		int width;
 		int height;
