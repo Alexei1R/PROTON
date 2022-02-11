@@ -70,7 +70,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 		vec.x = mesh->mTextureCoords[0][i].x;
 		vec.y = mesh->mTextureCoords[0][i].y;
 		vertex.TexCoords = vec;
-			//std::cout << vec.x<<" : " <<vec.y << std::endl;
+			std::cout << vec.x<<" : " <<vec.y << std::endl;
 
 		vertices.push_back(vertex);
 

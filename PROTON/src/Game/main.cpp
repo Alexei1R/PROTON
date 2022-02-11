@@ -41,9 +41,8 @@ int main(void)
 
     Shader modelShader("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/vmonkey.glsl","C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/fmonkey.glsl");
     modelShader.Bind();
-    Model monkeyModel("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Model/plane.fbx");
-    Texture tex("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/can.png");
-    tex.Bind();
+    Model monkeyModel("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Model/cube.fbx");
+    
     modelShader.Bind();
     modelShader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
     modelShader.SetUniform3f("lpos", lightPos.x, lightPos.y, lightPos.z);
@@ -51,17 +50,24 @@ int main(void)
 
 
     //material uniform 
-
+    Texture tex("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/can.png");
+    tex.Bind(0);
     modelShader.SetUniform1i("material.diffuse", 0);
-    modelShader.SetUniform3f("material.specular", 0.5f, 0.5f, 0.5f);
+    Texture texrama("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Textures/rama.png");
+    texrama.Bind(1);
+    modelShader.SetUniform1i("material.specular", 1);
+
+
+
     modelShader.SetUniform1f("material.shininess", 32.0f);
 
     modelShader.SetUniform3f("light.ambient", 0.2f, 0.2f, 0.2f);
-    modelShader.SetUniform3f("light.diffuse", 0.5f, 0.5f, 0.5f); // darken the light a bit to fit the scene
+    modelShader.SetUniform3f("light.diffuse", 1.0f, 1.0f, 1.0f); // darken the light a bit to fit the scene
     modelShader.SetUniform3f("light.specular", 1.0f, 1.0f, 1.0f);
     
     
-
+    //new model
+    Model mod("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Model/cube.fbx");
     
 
 
@@ -101,14 +107,17 @@ int main(void)
         //modelShader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
         //modelShader.SetUniform3f("light.ambient", ambientColor.x, ambientColor.y, ambientColor.z);
         //modelShader.SetUniform3f("light.diffuse", diffuseColor.x, diffuseColor.y, diffuseColor.z);
-        tex.Bind();
+        
+        
+        tex.Bind(0);
+        texrama.Bind(1);
 
 
 
         monkeyModel.Draw(modelShader);
         
 
-        
+        mod.Draw(modelShader);
 
 
 
