@@ -10,13 +10,9 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Model.h"
-
-#include <imgui/imgui.h>
-#include <imgui/imgui_impl_glfw.h>
-#include <imgui/imgui_impl_opengl3.h>
-
-
-
+#include "ImGui/imgui.h"
+#include "ImGui/imgui_impl_glfw.h"
+#include "ImGui/imgui_impl_opengl3.h"
 
 
 
@@ -71,30 +67,37 @@ int main(void)
     
 
     //imgui setup
-    //IMGUI_CHECKVERSION();
-    //ImGui::CreateContext();
-    //ImGuiIO& io = ImGui::GetIO(); (void)io;
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
-    //io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
-    //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+    const char* glsl_version = "#version 130";
+
+
+    // Setup Dear ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
 
     // Setup Dear ImGui style
-    //ImGui::StyleColorsDark();
+    ImGui::StyleColorsDark();
     //ImGui::StyleColorsClassic();
 
     // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
-    //ImGuiStyle& style = ImGui::GetStyle();
-    //if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-    //{
-    //    style.WindowRounding = 0.0f;
-    //    style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-    //}
+    ImGuiStyle& style = ImGui::GetStyle();
+    if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+    {
+        style.WindowRounding = 0.0f;
+        style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+    }
 
     // Setup Platform/Renderer backends
-    //ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
-    //ImGui_ImplOpenGL3_Init("100");
+    ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
+
+   
 
 
 
@@ -102,9 +105,9 @@ int main(void)
     window.SetClearColor(glm::vec3(0.1,0.15,0.15));
     while (!glfwWindowShouldClose(window.getGLFWwindow()))
     {
-        //ImGui_ImplOpenGL3_NewFrame();
-        //ImGui_ImplGlfw_NewFrame();
-        //ImGui::NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
         glfwGetWindowSize(window.getGLFWwindow(),&width,&height);
         glViewport(0,0,width,height);
         window.Update();
@@ -112,6 +115,16 @@ int main(void)
         proj = glm::perspective(glm::radians(65.0f), (float)width / height, 0.1f, 1000.0f);
         view = camera.GetViewMatrix();
         camPos = camera.GetCameraPos();
+
+
+
+
+        ImGui::Begin("viewport");
+
+        ImGui::Text("alexei");
+
+        ImGui::End();
+
 
 
 
@@ -149,10 +162,27 @@ int main(void)
 
 
 
-        //ImGui::Render();
-        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+        {
+            GLFWwindow* backup_current_context = glfwGetCurrentContext();
+            ImGui::UpdatePlatformWindows();
+            ImGui::RenderPlatformWindowsDefault();
+            glfwMakeContextCurrent(backup_current_context);
+        }
+
+
+
+
         window.PoolEvents();
     }
+
+
+    // Cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 
     glfwTerminate();
     return 0;
