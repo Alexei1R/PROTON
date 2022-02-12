@@ -71,18 +71,18 @@ int main(void)
     
 
     //imgui setup
-    //IMGUI_CHECKVERSION();
-    //ImGui::CreateContext();
-    //ImGuiIO& io = ImGui::GetIO(); (void)io;
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
     //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
 
     // Setup Dear ImGui style
-    //ImGui::StyleColorsDark();
-    //ImGui::StyleColorsClassic();
+    ImGui::StyleColorsDark();
+    ImGui::StyleColorsClassic();
 
     // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
     //ImGuiStyle& style = ImGui::GetStyle();
@@ -93,8 +93,8 @@ int main(void)
     //}
 
     // Setup Platform/Renderer backends
-    //ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
-    //ImGui_ImplOpenGL3_Init("100");
+    ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
+    ImGui_ImplOpenGL3_Init("100");
 
 
 
@@ -102,9 +102,9 @@ int main(void)
     window.SetClearColor(glm::vec3(0.1,0.15,0.15));
     while (!glfwWindowShouldClose(window.getGLFWwindow()))
     {
-        //ImGui_ImplOpenGL3_NewFrame();
-        //ImGui_ImplGlfw_NewFrame();
-        //ImGui::NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
         glfwGetWindowSize(window.getGLFWwindow(),&width,&height);
         glViewport(0,0,width,height);
         window.Update();
@@ -124,33 +124,33 @@ int main(void)
         modelShader.SetUniformMatrix4f("proj",glm::value_ptr(proj),1);
         modelShader.SetUniform3f("camPos",camPos.x, camPos.y, camPos.z);
 
-        //lightColor.x = sin(glfwGetTime() * 2.0f);
-        //lightColor.y = sin(glfwGetTime() * 0.7f);
-        //lightColor.z = sin(glfwGetTime() * 1.3f);
+        lightColor.x = sin(glfwGetTime() * 2.0f);
+        lightColor.y = sin(glfwGetTime() * 0.7f);
+        lightColor.z = sin(glfwGetTime() * 1.3f);
 
-        //glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f); // decrease the influence
-        //glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f); // low influence
+        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f); // decrease the influence
+        glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f); // low influence
 
-        //modelShader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
-        //modelShader.SetUniform3f("light.ambient", ambientColor.x, ambientColor.y, ambientColor.z);
-        //modelShader.SetUniform3f("light.diffuse", diffuseColor.x, diffuseColor.y, diffuseColor.z);
+        modelShader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
+        modelShader.SetUniform3f("light.ambient", ambientColor.x, ambientColor.y, ambientColor.z);
+        modelShader.SetUniform3f("light.diffuse", diffuseColor.x, diffuseColor.y, diffuseColor.z);
         
-        
+
         tex.Bind(0);
         texrama.Bind(1);
 
 
 
         monkeyModel.Draw(modelShader);
-        
 
 
 
 
 
 
-        //ImGui::Render();
-        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         window.PoolEvents();
     }
 
