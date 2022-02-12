@@ -43,7 +43,7 @@ int main(void)
 
     Shader modelShader("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/vmonkey.glsl","C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/ASSETS/fmonkey.glsl");
     modelShader.Bind();
-    Model monkeyModel("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Model/cube.fbx");
+    Model monkeyModel("C:/Users/alexe/OneDrive/Desktop/PROJECTS/PROTON/PROTON/Model/cub.fbx");
     
     modelShader.Bind();
     modelShader.SetUniform3f("lcolor", lightColor.x, lightColor.y, lightColor.z);
@@ -72,8 +72,8 @@ int main(void)
 
     //imgui setup
     //IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    //ImGui::CreateContext();
+    //ImGuiIO& io = ImGui::GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
     //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
@@ -81,11 +81,11 @@ int main(void)
     //io.ConfigViewportsNoTaskBarIcon = true;
 
     // Setup Dear ImGui style
-    ImGui::StyleColorsDark();
+    //ImGui::StyleColorsDark();
     //ImGui::StyleColorsClassic();
 
     // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
-    ImGuiStyle& style = ImGui::GetStyle();
+    //ImGuiStyle& style = ImGui::GetStyle();
     //if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     //{
     //    style.WindowRounding = 0.0f;
@@ -93,8 +93,8 @@ int main(void)
     //}
 
     // Setup Platform/Renderer backends
-    ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
-    ImGui_ImplOpenGL3_Init("100");
+    //ImGui_ImplGlfw_InitForOpenGL(window.getGLFWwindow(), true);
+    //ImGui_ImplOpenGL3_Init("100");
 
 
 
@@ -102,9 +102,9 @@ int main(void)
     window.SetClearColor(glm::vec3(0.1,0.15,0.15));
     while (!glfwWindowShouldClose(window.getGLFWwindow()))
     {
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
+        //ImGui_ImplOpenGL3_NewFrame();
+        //ImGui_ImplGlfw_NewFrame();
+        //ImGui::NewFrame();
         glfwGetWindowSize(window.getGLFWwindow(),&width,&height);
         glViewport(0,0,width,height);
         window.Update();
@@ -149,8 +149,8 @@ int main(void)
 
 
 
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        //ImGui::Render();
+        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         window.PoolEvents();
     }
 
