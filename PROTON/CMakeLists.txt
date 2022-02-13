@@ -17,6 +17,8 @@ file (GLOB Gamefile_h "src/Game/*.h")
 file (GLOB Inputfile_c "src/Event/*.cpp")
 file (GLOB Inputfile_h "src/Event/*.h")
 
+
+
 # Добавьте источник в исполняемый файл этого проекта.
 add_executable (${PROJECT_NAME} 
 
@@ -47,5 +49,4 @@ target_link_libraries(${PROJECT_NAME}
 	glfw
 	assimp
 	libglew_static
-	imgui
 )
