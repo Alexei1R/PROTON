@@ -40,6 +40,7 @@ public:
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f));
     
     glm::vec3 GetCameraPos();
+    glm::vec3 GetCameraFront();
 
     glm::mat4 GetViewMatrix();
 private:

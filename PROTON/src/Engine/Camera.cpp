@@ -17,6 +17,10 @@
     glm::vec3 Camera::GetCameraPos(){
         return Position ;
     }
+    glm::vec3 Camera::GetCameraFront() {
+        return Front;
+    }
+
 
 
     void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)

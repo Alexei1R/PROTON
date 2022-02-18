@@ -18,3 +18,4 @@ target_include_directories(${PROJECT_NAME}    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 target_include_directories(${PROJECT_NAME}    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/glew/include )
 target_include_directories(${PROJECT_NAME}    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/assimp/include )
 target_include_directories(${PROJECT_NAME}    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/glm)
+

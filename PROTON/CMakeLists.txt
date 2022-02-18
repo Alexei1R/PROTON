@@ -5,8 +5,8 @@ cmake_minimum_required (VERSION 3.8)
 
 
 
-file (GLOB ImGuifile_c "imgui/*.cpp")
-file (GLOB ImGuifile_h "imgui/*.h")
+file (GLOB ImGuifile_c "src/imgui/*.cpp")
+file (GLOB ImGuifile_h "src/imgui/*.h")
 
 file (GLOB Enginefile_c "src/Engine/*.cpp")
 file (GLOB Enginefile_h "src/Engine/*.h")
@@ -44,6 +44,7 @@ add_executable (${PROJECT_NAME}
 include_directories(&{PROJECT_NAME}  ${CMAKE_CURRENT_SOURCE_DIR}/src/Engine)
 include_directories(&{PROJECT_NAME}  ${CMAKE_CURRENT_SOURCE_DIR}/src/Game)
 include_directories(&{PROJECT_NAME}  ${CMAKE_CURRENT_SOURCE_DIR}/src/Event)
+include_directories(&{PROJECT_NAME}  ${CMAKE_CURRENT_SOURCE_DIR}/src/imgui)
 
 target_link_libraries(${PROJECT_NAME}
 	glfw
